@@ -23,10 +23,10 @@
            Nome: <input type="text" name="nome" required  value="<?php echo $usuarios['NOME_USUARIO'] ?>"> <br/>
            Senha: <input type="text" name="senha" required value="<?php echo $usuarios['SENHA_USUARIO']?>"> <br/>
            Email: <input type="email" name="email" required value="<?php echo $usuarios['EMAIL_USUARIO']?>"> <br/>
-           Tipo de usuário:
+           <!--Tipo de usuário:
               <select name="tipo">
-           <?php 
-              $tipo = $usuarios['TIPO_USUARIO'];
+            <?php 
+             /* $tipo = $usuarios['TIPO_USUARIO'];
                if($tipo === 'ADM')
                {
                    echo '<option selected> ADM </option>';
@@ -36,9 +36,9 @@
                {
                  echo '<option selected> RES </option>';  
                  echo '<option> ADM </option>';
-               }
+               }*/
               ?>
-            </select> <br/>
+            </select> <br/>-->
            <!--CPF: <input type="text" name="cpf" required><br/>
            Logradouro: <input type="text" name="endereco" required> <br/>
            CEP: <input type="text" name="cep" required><br/>-->

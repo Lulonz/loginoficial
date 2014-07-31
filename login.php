@@ -1,6 +1,7 @@
 <?php
 echo '<meta charset=UTF-8>';
 include_once 'conexao/conecta.inc';
+include_once 'classes/bcrypt.class.php';
 
 if(isset($_POST['email']) and isset($_POST['senha'])){
     $email = $_POST['email'];
@@ -14,8 +15,27 @@ if(isset($_POST['email']) and isset($_POST['senha'])){
         $usuarios       = mysql_fetch_array($result);
         $senhaUsuario   = $usuarios['SENHA_USUARIO'];
         $tipoUsuario    = $usuarios['TIPO_USUARIO'];
-        if($senha !== $senhaUsuario){
-            echo '<a href="frm_login.php">Senha não confere!</a>';
+        $hash           = $senhaUsuario;
+        if(bcrypt::check($senha, $hash) == false)
+        {
+            if($senha == $senhaUsuario){
+                session_start();
+                $_SESSION['email'] = $email;
+                $_SESSION['senha'] = $senha;
+
+                if($tipoUsuario === 'RES'){
+                    echo '<script type="text/javascript">location.href="indexrestrito.php"</script>';
+                }else if($tipoUsuario === 'ADM'){
+                    echo '<script type="text/javascript">
+                             location.href="admin/indexadmin.php"
+                         </script>';
+                }else{
+                    echo '<a href=frm_login.php>Tipo de Usuários Inválido</a>';
+                }  
+            }else{
+                echo '<a href=frm_login.php>Senha não confere</a>';
+            }
+            
         }else{
             //Agora sem estão corretos email e senha
             session_start();

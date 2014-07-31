@@ -1,13 +1,15 @@
 <?php
 include_once('../conexao/conecta.inc');
+include_once ('../classes/bcrypt.class.php');
 $nome = $_POST['nome'];
 $senha = $_POST['senha'];
 $email = $_POST['email'];
-$tipo = $_POST['tipo'];
+$tipo = 'RES';
+$senha = Bcrypt::hash($senha);
 
-$q = "UPDATE usuario SET SENHA_USUARIO = '$senha',NOME_USUARIO = '$nome',TIPO_USUARIO = '$tipo',CONFIRMA_SENHA_USUARIO = '$senha' WHERE EMAIL_USUARIO = '$email'";
+$q = "UPDATE usuario SET SENHA_USUARIO = '$senha', NOME_USUARIO = '$nome',TIPO_USUARIO = '$tipo' WHERE EMAIL_USUARIO = '$email'";
 $r = mysql_query($q);
-if($r = true){
+if($r == true){
     header("Location:../indexrestrito.php");
 }
 /* 

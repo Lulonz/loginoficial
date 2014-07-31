@@ -102,7 +102,7 @@
 		<br />
                 <label>Digite um email válido</label><br/>
                 <input type="text" name="login" id="login" />
-                 ?>       
+                     
 		<br />
                   <label>Confirme o  email</label><br/>
                 <input type="text" name="conflogin" id="conflogin" />
@@ -118,7 +118,7 @@
 <br/><br/>
 
 
-		 <div class="loader" style="display: none;"><img src="images/loader.gif" alt="Carregando" /></div>
+		 <!--<div class="loader" style="display: none;"><img src="images/loader.gif" alt="Carregando" /></div>-->
                  
 </body>
 </html>
