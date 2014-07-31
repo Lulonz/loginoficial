@@ -1,10 +1,13 @@
 <?php
 echo '<meta charset=UTF-8>';
 include_once '../conexao/conecta.inc';
+include_once '../classes/bcrypt.class.php';
 $email = $_POST['login'];
 $senha = $_POST['senha'];
 $nome = $_POST['nome'];
 $tipoUsuario = 'RES';
+$senha = bcrypt:: hash($senha);
+
 $query = "INSERT INTO usuario(EMAIL_USUARIO,SENHA_USUARIO,NOME_USUARIO,TIPO_USUARIO)";
 $query.= " VALUES('$email','$senha','$nome','$tipoUsuario')";
 
