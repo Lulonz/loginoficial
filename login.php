@@ -16,9 +16,10 @@ if(isset($_POST['email']) and isset($_POST['senha'])){
         $senhaUsuario   = $usuarios['SENHA_USUARIO'];
         $tipoUsuario    = $usuarios['TIPO_USUARIO'];
         $hash           = $senhaUsuario;
-        if(bcrypt::check($senha, $hash) == false)
+        /*if(bcrypt::check($senha, $hash) == false)
         {
-            if($senha == $senhaUsuario){
+            if($senha == $senhaUsuario){*/
+            if(Bcrypt::check($senha,$hash)){
                 session_start();
                 $_SESSION['email'] = $email;
                 $_SESSION['senha'] = $senha;
